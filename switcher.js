@@ -25,11 +25,17 @@ chrome.tabs.onActiveChanged.addListener(function(id, selectInfo) {
     }
 });
 
-chrome.browserAction.onClicked.addListener(swapTabs);
+chrome.browserAction.onClicked.addListener(function(tab) {
+    swapTabs();
+});
 
-function swapTabs(tab) {
+function swapTabs() {
     chrome.tabs.update(tabs[1], {selected: true});
     console.log("manually swapped tabs!");
-    console.log("current= " + tab.id + " switching to " + tabs[1]);
+    console.log("switching to " + tabs[1]);
     console.log(tabs);
 }
+
+chrome.commands.onCommand.addListener(function(command) {
+    swapTabs();
+});

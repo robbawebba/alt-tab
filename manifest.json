@@ -11,5 +11,13 @@
   "background": {
     "scripts": ["switcher.js"],
     "persistent": true
+  },
+  "commands": {
+    "swap": {
+      "suggested_key": {
+        "default": "Alt+1"
+      },
+      "description": "Switch to the most recently opened tab"
+    }
   }
 }
