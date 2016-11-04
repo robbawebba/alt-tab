@@ -1,26 +1,26 @@
 var storage = chrome.storage.local;
-var saveData = {"tabIDs": []};
+var tabs = {"ids": []};
 
 chrome.tabs.onCreated.addListener(function(tab) {
     console.log("Tab Created: " + tab.id);
-    saveData.tabIDs.push(tab.id.toString());
+    tabs.ids.push(tab.id.toString());
     saveIDs();
-    console.log(saveData.tabIDs);
+    console.log(tabs.ids);
     getIDs();
 });
 
 function getIDs() {
-    storage.get('tabIDs', function(result) {
+    storage.get('ids', function(result) {
       console.log("IDs retrieved:");
-      console.log(result.tabIDs);
-      saveData = result;
+      console.log(result.ids);
+      tabs = result;
     });
 }
 
 function saveIDs() {
-    storage.set(saveData, function() {
+    storage.set(tabs, function() {
       console.log("IDs Saved:");
-      console.log(saveData.tabIDs);
+      console.log(tabs.ids);
     });
 }
 
