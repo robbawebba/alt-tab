@@ -10,7 +10,7 @@
   },
   "background": {
     "scripts": ["switcher.js"],
-    "persistent": false
+    "persistent": true
   },
   "permissions": [
     "storage"
