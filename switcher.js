@@ -20,9 +20,11 @@ chrome.tabs.onActiveChanged.addListener(function(id, selectInfo) {
     if (oldLocation > -1)  {
         tabs.splice(oldLocation,1)
         tabs.unshift(id);
-        console.log("Tab switch: active=" + id);
-        console.log(tabs);
+    } else { // catches orphan tabs and adds them to the list
+		tabs.unshift(id)
     }
+    console.log("Tab switch: active=" + id);
+        console.log(tabs);
 });
 
 chrome.browserAction.onClicked.addListener(function(tab) {
