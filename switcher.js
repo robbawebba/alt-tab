@@ -1,5 +1,7 @@
-var storage = chrome.storage.local;
-var tabs = [];
+var tabs= [];
+ 
+var val = tabs instanceof Array;
+console.log(val);
 
 chrome.tabs.onCreated.addListener(function(tab) {
     console.log("Tab Created: " + tab.id);
@@ -13,3 +15,12 @@ chrome.tabs.onRemoved.addListener(function (id, removeInfo) {
     tabs.splice(removed, 1);
 });
 
+chrome.tabs.onActiveChanged.addListener(function(id, selectInfo) {
+    var oldLocation = tabs.indexOf(id);
+    if (oldLocation > -1)  {
+        tabs.splice(oldLocation,1)
+        tabs.unshift(id);
+        console.log("Tab switch: " + id);
+        console.log(tabs);
+    }
+});
