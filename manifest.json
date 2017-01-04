@@ -13,11 +13,23 @@
     "persistent": true
   },
   "commands": {
-    "swap": {
+    "swap1": {
       "suggested_key": {
         "default": "Alt+1"
       },
-      "description": "Switch to the most recently opened tab"
+      "description": "Switch to the most recently opened tab, as long as at least 1 other tab is open"
+    },
+    "swap2": {
+      "suggested_key": {
+        "default": "Alt+2"
+      },
+      "description": "Switch to the 2nd most recently opened tab, as long as at least 2 other tabs are open"
+    },
+    "swap3": {
+      "suggested_key": {
+        "default": "Alt+3"
+      },
+      "description": "Switch to the 3rd most recently opened tab, as long as at least 3 other tabs are open"
     }
   }
 }
