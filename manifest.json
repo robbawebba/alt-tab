@@ -17,19 +17,25 @@
       "suggested_key": {
         "default": "Alt+1"
       },
-      "description": "Switch to the most recently opened tab, as long as at least 1 other tab is open"
+      "description": "Switch to the most recently opened tab, as long as at least 1 other tab is open."
     },
     "swap2": {
       "suggested_key": {
         "default": "Alt+2"
       },
-      "description": "Switch to the 2nd most recently opened tab, as long as at least 2 other tabs are open"
+      "description": "Switch to the 2nd most recently opened tab, as long as at least 2 other tabs are open."
     },
-    "swap3": {
+    "arrowRight": {
       "suggested_key": {
-        "default": "Alt+3"
+        "default": "Alt+Right"
       },
-      "description": "Switch to the 3rd most recently opened tab, as long as at least 3 other tabs are open"
+      "description": "Scroll to the right through tabs in the order they appear in the window. "
+    },
+    "arrowLeft": {
+      "suggested_key": {
+        "default": "Alt+Left"
+      },
+      "description": "Scroll to the left through tabs in the order they appear in the window. "
     }
   }
 }

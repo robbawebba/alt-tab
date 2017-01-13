@@ -1,4 +1,5 @@
 var tabs= [];
+var windowOrder = []
  
 var val = tabs instanceof Array;
 console.log(val);
@@ -48,20 +49,21 @@ function swapTabs(n) {
 }
 // Handle alt+[1-3] swapping commands
 chrome.commands.onCommand.addListener(function(command) {
+    console.log("NAME= "+ command.name)
     tabMultiplier = Number(command.charAt(command.length-1));
     console.log("tabMultiplier: " + String(tabMultiplier));
     swapTabs(tabMultiplier);
 });
 
-function updateTabs() {
+function updateTabs() {         
     console.log("in UpdateTabs...");
     console.log(tabs);
     var newTabs = [];
     chrome.tabs.query({currentWindow: true},function(tabArr) {
         console.log(tabArr);
         tabArr.map(function(tab) {console.log(tab.id);newTabs.push(tab.id);});
+        console.log("newTabs:::");
+        console.log(newTabs);
+        newTabs.map(function(tab){if(tabs.lastIndexOf(tab)==-1) tabs.push(tab);});
     });
-    console.log("newTabs:::");
-    console.log(newTabs);
-    newTabs.map(function(tab){if(tabs.lastIndexOf(tab)==-1) tabs.push(tab);});
 }
