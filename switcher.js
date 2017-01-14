@@ -1,21 +1,15 @@
 var tabs= [];
-var windowOrder = []
- 
-var val = tabs instanceof Array;
-console.log(val);
+var currentWindow = null;
 
 // User creates a new Tab
 chrome.tabs.onCreated.addListener(function(tab) {
-    console.log("Tab Created: " + tab.id);
     tabs.push(tab.id);
-    console.log(tabs);
     updateTabs();
 });
 
 // User deletes a Tab
 chrome.tabs.onRemoved.addListener(function (id, removeInfo) {
     var removed = tabs.indexOf(id);
-    console.log("removing tab " + id);
     tabs.splice(removed, 1);
     updateTabs();
 });
@@ -29,8 +23,6 @@ chrome.tabs.onActiveChanged.addListener(function(id, selectInfo) {
     } else { // catches orphan tabs and adds them to the list
 		tabs.unshift(id)
     }
-    console.log("Tab switch: active=" + id);
-    console.log(tabs);
     updateTabs();
 });
 
@@ -40,30 +32,39 @@ chrome.browserAction.onClicked.addListener(function(tab) {
 });
 
 // Swaps current tab with the nth most recent tab
-function swapTabs(n) {
-    console.log("manually swapped tabs!");
-    console.log("switching to " + tabs[n]);
-    chrome.tabs.update(tabs[n], {active: true});
-    console.log(tabs);
+function swapTabs(tabArr, n) {
+    chrome.tabs.update(tabArr[n], {active: true});
     updateTabs();
 }
-// Handle alt+[1-3] swapping commands
+// Handle Alt+[1,2] and Ctrl+[Right,Left] commands
 chrome.commands.onCommand.addListener(function(command) {
-    console.log("NAME= "+ command.name)
-    tabMultiplier = Number(command.charAt(command.length-1));
-    console.log("tabMultiplier: " + String(tabMultiplier));
-    swapTabs(tabMultiplier);
+    if(command === "arrowLeft" | command === "arrowRight") { // Ctrl+[Right,Left]
+        chrome.windows.getCurrent({populate: true}, function(currentWindow) {
+            if (window.id != currentWindow) {
+                currentWindow = window.id;
+                updateTabs();
+            }
+            swapTabs(window.tabs, 1);
+        });
+    } else { // Alt+[1,2]
+        tabMultiplier = Number(command.charAt(command.length-1));
+        swapTabs(tabs, tabMultiplier);
+    }
 });
 
+// Gathers all tabs missing from the 'tabs' array and pushes them on the back
+// (e.g. tabs that Google spawns in the background)
 function updateTabs() {         
-    console.log("in UpdateTabs...");
-    console.log(tabs);
     var newTabs = [];
     chrome.tabs.query({currentWindow: true},function(tabArr) {
-        console.log(tabArr);
-        tabArr.map(function(tab) {console.log(tab.id);newTabs.push(tab.id);});
-        console.log("newTabs:::");
-        console.log(newTabs);
-        newTabs.map(function(tab){if(tabs.lastIndexOf(tab)==-1) tabs.push(tab);});
+        currentWindow = tabArr[1].windowId;
+        tabArr.map(function(tab) {
+            newTabs.push(tab.id);
+        });
+        newTabs.map(function(tab){
+            if(tabs.lastIndexOf(tab)==-1) {
+                tabs.push(tab);
+            } 
+        });
     });
 }

@@ -27,15 +27,16 @@
     },
     "arrowRight": {
       "suggested_key": {
-        "default": "Alt+Right"
+        "default": "Ctrl+Right"
       },
       "description": "Scroll to the right through tabs in the order they appear in the window. "
     },
     "arrowLeft": {
       "suggested_key": {
-        "default": "Alt+Left"
+        "default": "Ctrl+Left"
       },
-      "description": "Scroll to the left through tabs in the order they appear in the window. "
+      "description": "Scroll to the left through tabs in the order they appear in the window. ",
+      "name": "left"
     }
   }
 }
