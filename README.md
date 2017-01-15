@@ -21,6 +21,7 @@ Below are the supported functions with this Chrome extension:
 
 ## Contributing
 Thank you for your interest in making this extension better! Follow these steps to contribute:
+
 1. Create an Issue on the GitHub issue tracker for this repository, or look for an open issue with a `Help Wanted` label. 
 2. Fork this repository using the "Fork" button in the top-right corner. 
 3. Clone your fork onto your computer: `git clone https://github.com/<USERNAME>/alt-tab.git`
