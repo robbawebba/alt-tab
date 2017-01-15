@@ -4,9 +4,12 @@
   "name": "Alt+ Tab Switcher",
   "description": "This extension allows you to switch to previous tabs in the order in which they were last viewed.",
   "version": "1.0",
+  "icons": {
+    "128": "./assets/icon128.png"
+  },
 
   "browser_action": {
-   "default_title": "Switch Tabs"
+    "default_title": "Switch Tabs"
   },
   "background": {
     "scripts": ["switcher.js"],

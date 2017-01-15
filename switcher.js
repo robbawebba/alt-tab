@@ -28,7 +28,7 @@ chrome.tabs.onActiveChanged.addListener(function(id, selectInfo) {
 
 // Click handler for tab icon
 chrome.browserAction.onClicked.addListener(function(tab) {
-    swapTabs(1);
+    swapTabs(tabs, 1);
 });
 
 // Swaps current tab with the nth most recent tab
