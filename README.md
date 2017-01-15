@@ -1,4 +1,4 @@
-# Alt+ Tab Switcher
+# Alt+Tab Switcher
 The Google Chrome extension to support fast swapping between tabs. 
 
 ## Installation 
@@ -6,7 +6,7 @@ This extension is coming soon to the Chrome Web Store!
 
 #### Developer Mode Installation
 Alternatively, you can install this extension in developer mode:
-1. Clone this repository: `git clone https://github.com/robbawebba/alt+.git` and remember it's location.
+1. Clone this repository: `git clone https://github.com/robbawebba/alt-tab.git` and remember it's location.
 2. Open the Crome Extensions page by either 
 clicking the `options` icon (3 dotesin the upper-right corner) in your browser and clicking `More tools > Extensions`, or
 Opening your browser and navigating to `chrome://extensions`
@@ -22,7 +22,7 @@ Below are the supported functions with this Chrome extension:
 ## Contributing
 Thank you for your interest in making this extension better! Follow these steps to contribute:
 1. Create an Issue on the GitHub issue tracker for this repository, or look for an open issue with a `Help Wanted` label. 
-1. Fork this repository using the "Fork" button in the top-right corner. 
-2. Clone your fork onto your computer: `git clone https://github.com/<USERNAME>/alt+.git`
-3. Create a separate branch for your work with a name that summarizes your changes: `git checkout -b my-branch-name`
-4. Create a pull request that targets the `develop` branch on this repository.
+2. Fork this repository using the "Fork" button in the top-right corner. 
+3. Clone your fork onto your computer: `git clone https://github.com/<USERNAME>/alt-tab.git`
+4. Create a separate branch for your work with a name that summarizes your changes: `git checkout -b my-branch-name`
+5. Create a pull request that targets the `develop` branch on this repository.
